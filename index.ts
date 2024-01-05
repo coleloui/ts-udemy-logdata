@@ -1,18 +1,24 @@
 import axios from 'axios';
 
+interface IPost {
+    userId: number;
+    title: string;
+    body: string;
+}
+
 const URL = 'https://jsonplaceholder.typicode.com/posts/1'
 
 axios.get(URL).then((response) => {
-    const post = response.data
+    const post = response.data as IPost
     
-    const id = post.userId
-    const header = post.title
-    const content = post.body
+    const userId = post.userId
+    const title = post.title
+    const body = post.body
 
     console.log(`
-        User ID is ${id}
-        Title of post: ${header}
-        Post Content: ${content}
+        User ID is ${userId}
+        Title of post: ${title}
+        Post Content: ${body}
     `);
     
 })
